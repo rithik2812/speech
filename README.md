@@ -20,6 +20,8 @@ The system is trained on the **RAVDESS dataset**, which includes emotional speec
   4. Apply Discrete Cosine Transform (DCT)
 - **Output**: 2D time-frequency representation used as CNN input
 
+- they capture the spectral properties of speech that are most relevant to how humans hear. In our project, MFCCs help the model understand the tone, pitch, and rhythm, which are crucial for detecting emotions in speech.
+
 ---
 
 ## CNN (Convolutional Neural Network)
