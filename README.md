@@ -55,3 +55,33 @@ nput: MFCC (shape: time_steps x n_mfcc)
 
 Output: Emotion class (e.g., Happy, Sad, Angry, etc.)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+| Layer                              | Output Shape   | Description                                                 |
+| ---------------------------------- | -------------- | ----------------------------------------------------------- |
+| **Input Layer**                    | (100, 40, 1)   | MFCC input features                                         |
+| **Conv2D (64 filters)**            | (100, 40, 64)  | Extracts low-level spatial features                         |
+| **MaxPooling2D**                   | (50, 20, 64)   | Reduces dimensionality, keeping the most important features |
+| **Dropout (0.3)**                  | (50, 20, 64)   | Prevents overfitting                                        |
+| **Conv2D (128 filters)**           | (50, 20, 128)  | Extracts higher-level spatial features                      |
+| **MaxPooling2D**                   | (25, 10, 128)  | Further reduces dimensionality                              |
+| **Dropout (0.3)**                  | (25, 10, 128)  | Regularization                                              |
+| **Reshape**                        | (25, -1)       | Prepares data for LSTM                                      |
+| **Bidirectional LSTM (128 units)** | (25, 256)      | Learns time dependencies (both forward and backward)        |
+| **Bidirectional LSTM (128 units)** | (256)          | Aggregates temporal context                                 |
+| **Dense (256 units)**              | (256)          | Fully connected layer with ReLU activation                  |
+| **Dropout (0.5)**                  | (256)          | Prevents overfitting                                        |
+| **Dense (softmax)**                | (num\_classes) | Output layer with probabilities for each emotion class      |
+
+
